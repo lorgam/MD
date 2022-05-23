@@ -48,3 +48,9 @@
 #Auxiliar files
 *.aux
 *.log
+
+#Node
+node_modules/
+
+# Distribution files
+dist/main.js

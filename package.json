@@ -1,0 +1,26 @@
+{
+  "name": "md",
+  "version": "0.0.1",
+  "description": "MD Prototype",
+  "main": "game/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorgam/MD.git"
+  },
+  "keywords": [
+    "MD"
+  ],
+  "author": "lorgam",
+  "bugs": {
+    "url": "https://github.com/lorgam/MD/issues"
+  },
+  "homepage": "https://github.com/lorgam/MD#readme",
+  "devDependencies": {
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  }
+}

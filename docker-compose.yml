@@ -7,3 +7,8 @@ services:
       - ./game:/usr/local/apache2/htdocs:ro
     ports:
       - 80:80
+  node:
+    image: node:14.16.1-alpine
+    volumes:
+       - ./:/node
+    working_dir: /node
