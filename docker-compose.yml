@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  webserver:
+    image: httpd:2.4-alpine
+    volumes:
+      - ./game:/usr/local/apache2/htdocs:ro
+    ports:
+      - 80:80
