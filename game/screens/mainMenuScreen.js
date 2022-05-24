@@ -1,22 +1,20 @@
 import GLOBALS from '../core/common/globals.js';
-import helpers from '../core/common/helpers.js';
+import Menu from '../core/interface/menu/menu.js';
+import TextOption from '../core/interface/menu/textOption.js';
 
-function MainMenuScreen() {}
+function MainMenuScreen() {
+  this.menu = new Menu(0, 0, GLOBALS.w, GLOBALS.h, GLOBALS.bg, [
+    new TextOption('Start', GLOBALS.fonts.menu, function(){console.log(this);}),
+    new TextOption('Options', GLOBALS.fonts.menu, function(){console.log(this);})
+  ]);
+}
 
 MainMenuScreen.prototype.update = function(elapsedTime) {
+  this.menu.update(elapsedTime);
 }
 
 MainMenuScreen.prototype.draw = function() {
-  let ctx = GLOBALS.ctx;
-  ctx.fillStyle = GLOBALS.bg;
-  ctx.fillRect(0, 0, GLOBALS.w, GLOBALS.h);
-
-  let g = helpers.lerp(0, 200, helpers.gradient);
-  ctx.fillStyle = `rgb(255, ${g}, ${g})`;
-  ctx.font      = GLOBALS.fonts.menu;
-
-  let text = 'MD';
-  ctx.fillText(text, (GLOBALS.w - ctx.measureText(text).width) / 2, (GLOBALS.h - 30) / 2);
+  this.menu.draw();
 }
 
 export default MainMenuScreen;
