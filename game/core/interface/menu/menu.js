@@ -35,7 +35,7 @@ Menu.prototype.arrangeOptions = function(option) {
   t = (this.h - h) / 2;
 
   for (i in this.options) {
-    this.options[i].y = t;
+    this.options[i].y = t + this.y;
     this.options[i].x = this.x;
     this.options[i].w = this.w;
     t += this.options[i].h + this.padding;
