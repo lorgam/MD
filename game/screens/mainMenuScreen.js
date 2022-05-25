@@ -1,14 +1,16 @@
 import GLOBALS from '../core/common/globals.js';
 import helpers from '../core/common/helpers.js';
+import ScreenStack from '../core/common/screenStack.js'
 import Menu from '../core/interface/menu/menu.js';
 import TextOption from '../core/interface/menu/textOption.js';
+import GameScreen from './gameScreen.js'
 
 function MainMenuScreen() {
   this.menu = new Menu(0, this.titleHeight, GLOBALS.w, GLOBALS.h - this.titleHeight, GLOBALS.menuBg, [
-    new TextOption('Start', GLOBALS.fonts.menu, GLOBALS.fonts.color, function(){
-      console.log(this);
+    new TextOption('Start', GLOBALS.fonts.menu, GLOBALS.fonts.color, function() {
+      ScreenStack.addScreen(new GameScreen());
     }),
-    new TextOption('Options', GLOBALS.fonts.menu, GLOBALS.fonts.color, function(){
+    new TextOption('Options', GLOBALS.fonts.menu, GLOBALS.fonts.color, function() {
       console.log(this);
     })
   ]);
