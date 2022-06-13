@@ -1,5 +1,6 @@
 import GLOBALS from '../../common/globals.js';
 import INPUT from '../../common/input.js';
+import collisions from '../../physics/collisions.js';
 
 function Menu(x, y, w, h, color, options = [], padding = 2) {
   this.x = x;
@@ -23,9 +24,19 @@ Menu.prototype.draw = function() {
 }
 
 Menu.prototype.update = function(timeElapsed) {
+  // Keyboard
   if (INPUT.keyboard.ENTER.execute()) this.options[this.selectedOption].execute();
   if (INPUT.keyboard.ARROW_UP.execute()) this.selectedOption = (this.selectedOption + this.options.length - 1) % this.options.length;
   if (INPUT.keyboard.ARROW_DOWN.execute()) this.selectedOption = (this.selectedOption + 1) % this.options.length;
+  // Mouse
+  if (INPUT.mouse.clicked && collisions.boxPoint(this, INPUT.mouse)) {
+    for (let i in this.options) {
+      if (collisions.boxPoint(this.options[i], INPUT.mouse)) {
+        this.options[i].execute();
+        break;
+      }
+    }
+  }
 }
 
 Menu.prototype.arrangeOptions = function(option) {
